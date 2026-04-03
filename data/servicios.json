@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "nombre": "Reparación de celulares",
+    "descripcion": "Diagnóstico y reparación de smartphones.",
+    "img": "assets/img/celulares.jpg"
+  },
+  {
+    "id": 2,
+    "nombre": "Reparación de laptops",
+    "descripcion": "Mantenimiento y cambio de piezas.",
+    "img": "assets/img/laptops.jpg"
+  },
+  {
+    "id": 3,
+    "nombre": "Reparación de consolas",
+    "descripcion": "Servicio técnico para videojuegos.",
+    "img": "assets/img/consolas.jpg"
+  }
+]

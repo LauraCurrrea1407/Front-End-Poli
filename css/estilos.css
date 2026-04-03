@@ -1,0 +1,95 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* COLOR NARANJA */
+.text-orange {
+  color: #ff6b00;
+}
+
+.btn-orange {
+  background: #ff6b00;
+  color: white;
+  border: none;
+}
+
+.btn-orange:hover {
+  background: #e65c00;
+}
+
+/* HERO */
+.hero {
+  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+  url('../assets/img/fondo.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 80vh;
+}
+
+/* CARDS */
+.card img {
+  height: 180px;
+  object-fit: cover;
+}
+
+
+
+
+
+
+/* Si quieres sobreescribir colores o agregar animaciones */
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+/* Personalización de los badges de estado */
+.badge {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Ajustes adicionales del modal si quieres animación */
+#modal {
+  transition: opacity 0.3s ease;
+}
+
+
+/* ================= CTA ================= */
+.cta-final {
+  background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)),
+              url('https://images.unsplash.com/photo-1581090700227-4c4c0f4e8b8c');
+  background-size: cover;
+  background-position: center;
+  min-height: 300px;
+  padding: 80px 20px;
+}
+
+.cta-final h2 {
+  font-size: 2rem;
+}
+
+.cta-final p {
+  font-size: 1.1rem;
+}
+
+
+.footer {
+  background-color: #000;
+}
+
+.footer h5 {
+  color: #fff;
+}
+
+.footer p,
+.footer li {
+  color: #ccc;
+  font-size: 0.95rem;
+}
+
+.footer hr {
+  opacity: 0.2;
+}
