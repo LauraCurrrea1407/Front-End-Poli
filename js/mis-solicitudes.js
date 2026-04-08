@@ -193,5 +193,5 @@ function cargarHoras(fecha, horaSeleccionada = null) {
   });
 }
 
-// ================= INIT =================
+// ================= INIT ==================
 renderSolicitudes();

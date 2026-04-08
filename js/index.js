@@ -2,6 +2,7 @@ fetch('data/servicios.json')
   .then(res => res.json())
   .then(servicios => {
 
+    
     const container = document.getElementById("serviciosContainer");
 
     servicios.forEach(s => {
