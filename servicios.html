@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Servicios</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .services {
+      padding: 50px;
+      text-align: center;
+      background-color: #f4f4f4;
+    }
+
+    .services h2 {
+      margin-bottom: 30px;
+      font-size: 2rem;
+    }
+
+    .services-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 15px;
+    }
+
+    .card h3 {
+      margin: 10px 0;
+    }
+
+    .card p {
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+    .card button {
+      margin-top: 10px;
+      padding: 10px;
+      border: none;
+      background-color: #007BFF;
+      color: white;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .card button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+
+<body>
+
+<section class="services">
+  <h2>Nuestros Servicios</h2>
+  <div id="services-container" class="services-container"></div>
+</section>
+
+<script>
+  const services = [
+    {
+      id: 1,
+      name: "Desarrollo Web",
+      description: "Creación de sitios web modernos y responsivos.",
+      image: "https://via.placeholder.com/300x200"
+    },
+    {
+      id: 2,
+      name: "Diseño UI/UX",
+      description: "Diseños atractivos centrados en el usuario.",
+      image: "https://via.placeholder.com/300x200"
+    },
+    {
+      id: 3,
+      name: "Marketing Digital",
+      description: "Estrategias para posicionar tu marca.",
+      image: "https://via.placeholder.com/300x200"
+    },
+    {
+      id: 4,
+      name: "Soporte Técnico",
+      description: "Soluciones rápidas para problemas tecnológicos.",
+      image: "https://via.placeholder.com/300x200"
+    }
+  ];
+
+  const container = document.getElementById("services-container");
+
+  services.forEach(service => {
+    const card = document.createElement("div");
+    card.classList.add("card");
+
+    card.innerHTML = `
+      <img src="${service.image}" alt="${service.name}">
+      <div class="card-content">
+        <h3>${service.name}</h3>
+        <p>${service.description}</p>
+        <button onclick="viewMore(${service.id})">Ver más</button>
+      </div>
+    `;
+
+    container.appendChild(card);
+  });
+
+  function viewMore(id) {
+    alert("Ver más del servicio ID: " + id);
+  }
+</script>
+
+</body>
+</html>
+<!-- cambio servicios -->
+ 
