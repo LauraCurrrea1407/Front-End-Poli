@@ -1,8 +1,22 @@
 let solicitudes = JSON.parse(localStorage.getItem('solicitudes')) || [];
+let servicios = JSON.parse(localStorage.getItem('servicios')) || [];
 let editId = null;
 
-// Modal Bootstrap
 const modal = new bootstrap.Modal(document.getElementById('modal'));
+
+// ================= CARGAR SERVICIOS =================
+function cargarServicios() {
+  servicios = JSON.parse(localStorage.getItem('servicios')) || [];
+
+  const select = document.getElementById('servicio');
+  select.innerHTML = `<option value="">Seleccione</option>`;
+
+  servicios.forEach(s => {
+    select.innerHTML += `
+      <option value="${s.nombre}">${s.nombre}</option>
+    `;
+  });
+}
 
 // ================= RENDER =================
 function renderSolicitudes() {
@@ -26,32 +40,19 @@ function renderSolicitudes() {
 
     let badge = '';
     switch (s.estado) {
-      case 'Pendiente':
-        badge = 'bg-warning text-dark';
-        break;
-      case 'En Progreso':
-        badge = 'bg-primary';
-        break;
-      case 'Editada':
-        badge = 'bg-secondary';
-        break;
-      case 'Cancelada':
-        badge = 'bg-danger';
-        break;
-      case 'Solucionada':
-        badge = 'bg-success';
-        break;
-      default:
-        badge = 'bg-dark';
+      case 'Pendiente': badge = 'bg-warning text-dark'; break;
+      case 'En Progreso': badge = 'bg-primary'; break;
+      case 'Solucionada': badge = 'bg-success'; break;
+      case 'Cancelada': badge = 'bg-danger'; break;
+      case 'Editada': badge = 'bg-secondary'; break;
+      default: badge = 'bg-dark';
     }
 
     tabla.innerHTML += `
       <tr>
         <td>${s.id}</td>
         <td>${s.servicio}</td>
-        <td>
-          <span class="badge ${badge}">${s.estado}</span>
-        </td>
+        <td><span class="badge ${badge}">${s.estado}</span></td>
         <td>${s.fecha}</td>
         <td class="text-end">
           <button class="btn btn-sm btn-primary me-1" onclick="editarSolicitud(${s.id})">
@@ -73,11 +74,14 @@ function guardarLocalStorage() {
   localStorage.setItem('solicitudes', JSON.stringify(solicitudes));
 }
 
-// ================= ABRIR MODAL =================
+// ================= NUEVA SOLICITUD =================
 document.getElementById('btnAgregar').addEventListener('click', () => {
   document.getElementById('modalTitulo').textContent = 'Nueva Solicitud';
   document.getElementById('formSolicitud').reset();
   editId = null;
+
+  cargarServicios();
+
   modal.show();
 });
 
@@ -91,7 +95,7 @@ document.getElementById('formSolicitud').addEventListener('submit', (e) => {
   const fecha = document.getElementById('fecha').value;
   const hora = document.getElementById('hora').value;
 
-  if (!servicio || !detalles || !datosExtra || !fecha || !hora) {
+  if (!servicio || !detalles || !fecha || !hora) {
     alert('Completa todos los campos');
     return;
   }
@@ -127,10 +131,15 @@ function editarSolicitud(id) {
   editId = id;
 
   document.getElementById('modalTitulo').textContent = 'Editar Solicitud';
-  document.getElementById('servicio').value = s.servicio;
-  document.getElementById('detalles').value = s.detalles;
-  document.getElementById('datosExtra').value = s.datosExtra;
-  document.getElementById('fecha').value = s.fecha;
+
+  cargarServicios(); 
+
+  setTimeout(() => {
+    document.getElementById('servicio').value = s.servicio;
+    document.getElementById('detalles').value = s.detalles;
+    document.getElementById('datosExtra').value = s.datosExtra;
+    document.getElementById('fecha').value = s.fecha;
+  }, 50);
 
   cargarHoras(s.fecha, s.hora);
 
@@ -143,6 +152,7 @@ function cancelarSolicitud(id) {
     solicitudes = solicitudes.map(s =>
       s.id === id ? { ...s, estado: 'Cancelada' } : s
     );
+
     guardarLocalStorage();
     renderSolicitudes();
   }
@@ -194,4 +204,5 @@ function cargarHoras(fecha, horaSeleccionada = null) {
 }
 
 // ================= INIT =================
+cargarServicios();   
 renderSolicitudes();

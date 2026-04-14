@@ -2,136 +2,105 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Servicios</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-    }
+  <title>Servicios - TechFixPro</title>
 
-    .services {
-      padding: 50px;
-      text-align: center;
-      background-color: #f4f4f4;
-    }
+  <!-- BOOTSTRAP -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    .services h2 {
-      margin-bottom: 30px;
-      font-size: 2rem;
-    }
+  <!-- ICONOS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 
-    .services-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
-
-    .card {
-      background: #fff;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      transition: transform 0.3s;
-    }
-
-    .card:hover {
-      transform: scale(1.05);
-    }
-
-    .card img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-    }
-
-    .card-content {
-      padding: 15px;
-    }
-
-    .card h3 {
-      margin: 10px 0;
-    }
-
-    .card p {
-      font-size: 0.9rem;
-      color: #555;
-    }
-
-    .card button {
-      margin-top: 10px;
-      padding: 10px;
-      border: none;
-      background-color: #007BFF;
-      color: white;
-      cursor: pointer;
-      border-radius: 5px;
-    }
-
-    .card button:hover {
-      background-color: #0056b3;
-    }
-  </style>
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/estilos.css">
 </head>
 
 <body>
 
-<section class="services">
-  <h2>Nuestros Servicios</h2>
-  <div id="services-container" class="services-container"></div>
+<!-- ================= NAVBAR ================= -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+  <div class="container">
+    <a class="navbar-brand fw-bold text-dark" href="index.html">
+      TechFix<span class="text-orange">Pro</span>
+    </a>
+
+    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="menu">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+        <li class="nav-item"><a class="nav-link" href="servicios.html">Servicios</a></li>
+        <li class="nav-item"><a class="nav-link" href="mis-solicitudes.html">Mis Solicitudes</a></li>
+        <li class="nav-item"><a class="nav-link" href="favoritos.html">Favoritos</a></li>
+        <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ================= HEADER ================= -->
+<section class="container text-center my-5">
+  <h1 class="fw-bold">Nuestros Servicios</h1>
+  <p>Encuentra el servicio que necesitas</p>
+
+  <!-- BUSCADOR -->
+  <input type="text" id="buscador" class="form-control w-50 mx-auto mt-3" placeholder="Buscar servicio...">
 </section>
 
-<script>
-  const services = [
-    {
-      id: 1,
-      name: "Desarrollo Web",
-      description: "Creación de sitios web modernos y responsivos.",
-      image: "https://via.placeholder.com/300x200"
-    },
-    {
-      id: 2,
-      name: "Diseño UI/UX",
-      description: "Diseños atractivos centrados en el usuario.",
-      image: "https://via.placeholder.com/300x200"
-    },
-    {
-      id: 3,
-      name: "Marketing Digital",
-      description: "Estrategias para posicionar tu marca.",
-      image: "https://via.placeholder.com/300x200"
-    },
-    {
-      id: 4,
-      name: "Soporte Técnico",
-      description: "Soluciones rápidas para problemas tecnológicos.",
-      image: "https://via.placeholder.com/300x200"
-    }
-  ];
+<!-- ================= SERVICIOS ================= -->
+<section class="container my-5">
+  <div class="row" id="serviciosContainer"></div>
+</section>
 
-  const container = document.getElementById("services-container");
+<!-- ================= FOOTER ================= -->
+<footer class="footer bg-dark text-white pt-5 mt-5">
+  <div class="container">
+    <div class="row text-start">
 
-  services.forEach(service => {
-    const card = document.createElement("div");
-    card.classList.add("card");
-
-    card.innerHTML = `
-      <img src="${service.image}" alt="${service.name}">
-      <div class="card-content">
-        <h3>${service.name}</h3>
-        <p>${service.description}</p>
-        <button onclick="viewMore(${service.id})">Ver más</button>
+      <!-- Columna 1 -->
+      <div class="col-md-4 mb-4">
+        <h5 class="fw-bold">TechFixPro</h5>
+        <p class="text-light">
+          Soluciones tecnológicas rápidas y confiables para todos tus dispositivos.
+        </p>
       </div>
-    `;
 
-    container.appendChild(card);
-  });
+      <!-- Columna 2 -->
+      <div class="col-md-4 mb-4">
+        <h5 class="fw-bold">Servicios</h5>
+        <ul class="list-unstyled">
+          <li>Reparación de laptops</li>
+          <li>Reparación de consolas</li>
+          <li>Reparación de teléfonos</li>
+        </ul>
+      </div>
 
-  function viewMore(id) {
-    alert("Ver más del servicio ID: " + id);
-  }
-</script>
+      <!-- Columna 3 -->
+      <div class="col-md-4 mb-4">
+        <h5 class="fw-bold">Contacto</h5>
+        <p class="mb-1">Email: soporte@techfixpro.com</p>
+        <p>Tel: +57 300 123 4567</p>
+      </div>
+
+    </div>
+
+    <!-- Línea -->
+    <hr class="border-light">
+
+    <!-- Copyright -->
+    <div class="text-center pb-3">
+      <p class="mb-0 fs-5">© 2026 TechFixPro - Todos los derechos reservados</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ================= JS ================= -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="js/servicios.js"></script>
+<script src="js/favoritos.js"></script>
+<script src="js/menu.js"></script>
 
 </body>
 </html>
-<!-- cambio servicios -->
- 
