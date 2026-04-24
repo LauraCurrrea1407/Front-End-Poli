@@ -1,0 +1,65 @@
+<div class="container my-5">
+        
+    <!-- HEADER -->
+    <div class="mb-4 ">
+        <h2 class="fw-bold">Mis Favoritos ❤️</h2>
+        <p class="text-muted">Servicios que has guardado</p>
+    </div>
+
+    <!-- LISTADO -->
+    <div class="row">
+
+        <div class="col-md-3 mb-4" *ngFor="let s of favoritos">
+
+        <div class="card shadow-sm h-100">
+
+            <!-- Imagen -->
+            <img [src]="s.img"
+                class="card-img-top"
+                style="height: 180px; object-fit: cover;"
+                alt="servicio">
+
+            <!-- Contenido -->
+            <div class="card-body d-flex flex-column">
+
+            <h5 class="fw-bold">{{ s.nombre }}</h5>
+
+            <p class="text-muted small">
+                {{ s.descripcion }}
+            </p>
+
+            <!-- BOTONES -->
+            <div class="mt-auto d-flex flex-column gap-2">
+
+                <button class="btn btn-danger w-100"
+                        (click)="eliminar(s.nombre)">
+                <i class="bi bi-trash"></i> Eliminar
+                </button>
+
+                <button class="btn btn-outline-secondary w-100"
+                        (click)="verDetalle(s.id)">
+                Ver detalle
+                </button>
+
+            </div>
+
+            </div>
+
+        </div>
+
+        </div>
+
+    </div>
+
+    <!-- MENSAJE SI NO HAY FAVORITOS -->
+    <div *ngIf="favoritos.length === 0" class="text-center mt-5">
+
+        <h5 class="text-muted">No tienes favoritos aún 😢</h5>
+
+        <a routerLink="/servicios" class="btn btn-orange mt-3">
+        Ir a servicios
+        </a>
+
+    </div>
+
+</div>

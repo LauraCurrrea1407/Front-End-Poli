@@ -1,0 +1,169 @@
+<div class="container my-5">
+
+  <!-- HEADER -->
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+      <h2 class="fw-bold">Mis Solicitudes</h2>
+      <p class="text-muted">Gestiona y realiza seguimiento a tus pedidos técnicos</p>
+    </div>
+
+    <button class="btn btn-orange" (click)="abrirModal()">
+      <i class="bi bi-plus-circle"></i> Nueva Solicitud
+    </button>
+  </div>
+
+  <!-- ESTADÍSTICAS -->
+  <div class="row text-center mb-4">
+
+    <div class="col-md-3">
+      <div class="card p-3 shadow-sm">
+        <h6>Pendientes</h6>
+        <h3>{{ totalPendiente }}</h3>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card p-3 shadow-sm">
+        <h6>En Progreso</h6>
+        <h3>{{ totalProgreso }}</h3>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card p-3 shadow-sm">
+        <h6>Completadas</h6>
+        <h3>{{ totalCompletadas }}</h3>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card p-3 shadow-sm">
+        <h6>Canceladas</h6>
+        <h3>{{ totalCanceladas }}</h3>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FILTRO -->
+  <div class="mb-4">
+    <select class="form-select w-25" [(ngModel)]="filtroEstado">
+      <option value="Todos">Todos</option>
+      <option value="Pendiente">Pendiente</option>
+      <option value="En Progreso">En Progreso</option>
+      <option value="Solucionada">Solucionada</option>
+      <option value="Cancelada">Cancelada</option>
+    </select>
+  </div>
+
+  <!-- TABLA -->
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Servicio</th>
+        <th>Estado</th>
+        <th>Fecha</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let s of solicitudesFiltradas">
+        <td>{{ s.id }}</td>
+        <td>{{ s.servicio }}</td>
+        <td>
+          <span class="badge" [ngClass]="getEstadoClase(s.estado)">
+            {{ s.estado }}
+          </span>
+        </td>
+        <td>{{ s.fecha }}</td>
+
+        <td>
+          <button class="btn btn-primary btn-sm" (click)="editar(s)">
+            <i class="bi bi-pencil"></i>            
+          </button>
+          <button class="btn btn-sm btn-danger " (click)="cancelar(s.id)">
+            <i class="bi bi-x-circle"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+
+<!-- ================= OVERLAY MODAL ================= -->
+<div class="modal-overlay" *ngIf="mostrarModal">
+
+  <div class="modal-box">
+
+    <div class="d-flex justify-content-between mb-3">
+      <h5 class="fw-bold">
+        {{ editId ? 'Editar Solicitud' : 'Nueva Solicitud' }}
+      </h5>
+
+      <button class="btn btn-sm btn-danger" (click)="cerrarModal()">
+        ✖
+      </button>
+    </div>
+
+    <form (ngSubmit)="guardar()">
+
+      <!-- SERVICIO -->
+      <div class="mb-2">
+        <label class="form-label">Servicio</label>
+
+        <select class="form-select" [(ngModel)]="form.servicio" name="servicio">
+          <option value="">Seleccione</option>
+
+          <option *ngFor="let s of servicios" [value]="s.nombre">
+            {{ s.nombre }}
+          </option>
+        </select>
+      </div>
+
+      <!-- DETALLES -->
+      <div class="mb-2">
+        <label>Detalles</label>
+        <textarea class="form-control" [(ngModel)]="form.detalles" name="detalles"></textarea>
+      </div>
+
+      <!-- DETALLES ADICIONALES -->
+      <div class="mb-2">
+        <label>Datos adicionales</label>
+        <input class="form-control" [(ngModel)]="form.datosExtra" name="datosExtra">
+      </div>
+
+      <!-- FECHA -->
+      <div class="mb-2">
+        <label>Fecha</label>
+        <input type="date" class="form-control"
+          [(ngModel)]="form.fecha"
+          name="fecha"
+          (change)="cargarHoras(form.fecha)">
+      </div>
+
+      <!-- HORA -->
+      <div class="mb-3">
+        <label>Hora</label>
+
+        <select class="form-select" [(ngModel)]="form.hora" name="hora">
+          <option value="">Seleccione</option>
+
+          <option *ngFor="let h of horasDisponibles" [value]="h">
+            {{ h }}
+          </option>
+
+        </select>
+      </div>
+
+      <button class="btn btn-orange w-100">
+        Guardar
+      </button>
+
+    </form>
+
+  </div>
+
+</div>

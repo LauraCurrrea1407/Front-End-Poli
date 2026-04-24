@@ -1,0 +1,80 @@
+<div class="container my-5">
+
+  <div class="row">
+
+    <!-- IZQUIERDA: FORMULARIO -->
+    <div class="col-md-6">
+      <h4 class="fw-bold mb-3">Crear nuevo servicio</h4>
+
+      <div class="card p-4 shadow-sm">
+
+        <div class="mb-3">
+          <label class="form-label">Nombre del servicio</label>
+          <input type="text" class="form-control"
+            [(ngModel)]="form.nombre">
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Imagen</label>
+          <input type="text" class="form-control"
+            [(ngModel)]="form.img">
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Descripción corta</label>
+          <input type="text" class="form-control"
+            [(ngModel)]="form.descripcion">
+        </div>
+
+        <button class="btn btn-orange w-50 mx-auto"
+          (click)="guardarServicio()">
+          Aceptar
+        </button>
+
+      </div>
+    </div>
+
+    <!-- DERECHA: TABLA -->
+    <div class="col-md-6">
+      <h4 class="fw-bold mb-3">Listado de servicios</h4>
+
+      <div class="card p-4 shadow-sm">
+
+        <table class="table align-middle text-center">
+          <thead class="table-light">
+            <tr>
+              <th>Nombre</th>
+              <th>Eliminar</th>
+            </tr>
+          </thead>
+
+          <tbody>
+
+            <tr *ngFor="let s of servicios; let i = index">
+              <td>{{ s.nombre }}</td>
+
+              <td>
+                <button class="btn btn-sm btn-warning me-2"
+                  (click)="editar(i)">
+                  Editar
+                </button>
+
+                <button class="btn btn-sm btn-danger"
+                  (click)="eliminar(i)">
+                  Eliminar
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <button class="btn btn-orange mt-3"
+          (click)="limpiarForm()">
+          Limpiar formulario
+        </button>
+
+      </div>
+    </div>
+
+  </div>
+</div>

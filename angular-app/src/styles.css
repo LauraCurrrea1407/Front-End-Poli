@@ -1,0 +1,105 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* COLOR NARANJA */
+.text-orange {
+  color: #ff6b00;
+}
+
+.btn-orange {
+  background: #ff6b00;
+  color: white;
+  border: none;
+}
+
+.btn-orange:hover {
+  background: #e65c00;
+}
+
+/* HERO */
+.hero {
+background-image: url('/assets/img/fondo.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 80vh;
+}
+
+/* CARDS */
+.card img {
+  height: 180px;
+  object-fit: cover;
+}
+
+/* badges de estado */
+.badge {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  font-weight: bold;
+  text-align: center;
+}
+
+#modal {
+  transition: opacity 0.3s ease;
+}
+
+/* ================= CTA ================= */
+.cta-final {
+  background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)),
+              url('https://images.unsplash.com/photo-1581090700227-4c4c0f4e8b8c');
+  background-size: cover;
+  background-position: center;
+  min-height: 300px;
+  padding: 80px 20px;
+}
+
+.cta-final h2 {
+  font-size: 2rem;
+}
+
+.cta-final p {
+  font-size: 1.1rem;
+}
+
+
+.footer {
+  background-color: #000;
+}
+
+.footer h5 {
+  color: #fff;
+}
+
+.footer p,
+.footer li {
+  color: #ccc;
+  font-size: 0.95rem;
+}
+
+.footer hr {
+  opacity: 0.2;
+}
+
+
+.card {
+  border-radius: 10px;
+}
+
+.btn-orange {
+  background-color: #f28c40;
+  color: white;
+  border: none;
+}
+
+.btn-orange:hover {
+  background-color: #e67e22;
+}
+
+table td {
+  vertical-align: middle;
+}
+
+button {
+  border-radius: 8px;
+}
