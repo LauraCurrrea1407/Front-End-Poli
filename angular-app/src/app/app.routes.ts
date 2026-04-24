@@ -7,6 +7,7 @@ import { Contacto } from './contacto/contacto';
 import { Admin } from './admin/admin';
 import { DetalleServicio } from './detalle-servicio/detalle-servicio';
 
+
 export const routes: Routes = [
   { path: '', component: Home },
   { path: 'servicios', component: Servicios },
